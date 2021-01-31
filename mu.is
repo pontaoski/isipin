@@ -1,0 +1,18 @@
+~version: 2.0
+~path: /(post|mi)/.+
+
+$main: @mu
+
+$main: //div[@class="lt-content"]
+
+title:  $main/header[@class="lt-header"]/text()
+
+@replace_tag("<figure>"): $main//p[.//img]
+body:  $main/main
+
+@replace("tan ", ""): $main/header[@class="lt-header"]//address/text()
+author: $@
+
+channel: "@lipukule"
+
+@replace_tag("<related>"): $main//div[@class="lt-nav-footer"]

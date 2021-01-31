@@ -1,0 +1,23 @@
+type Expression =
+    | Variable of string
+    | Query of string
+    | Literal of string;
+
+type Statement =
+    | SetOption of `struct {
+        Key   string
+        Value string
+    }`
+    | SetComponent of `struct {
+        Component string
+        Query     Expression
+    }`
+    | Call of `struct {
+        Name string
+        Args []Expression
+        On   Expression
+    }`
+    | SetVariable of `struct {
+        Name  string
+        Value Expression
+    }`;
